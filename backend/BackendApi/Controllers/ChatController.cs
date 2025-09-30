@@ -1,38 +1,38 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BackendApi.Controllers
 {
-    public class ChatMessage
-    {
-        public string Role { get; set; }
-        public string Content { get; set; }
-    }
-
-    public class ChatRequest
-    {
-        public List<ChatMessage> Messages { get; set; }
-    }
-
     [ApiController]
     [Route("api/hr/[controller]")]
     public class ChatController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Chat([FromBody] ChatRequest request)
+        public IActionResult Chat([FromBody] ChatRequest req)
         {
-            // Merr mesazhin e fundit nga user-i
-            var lastMessage = request.Messages?.LastOrDefault()?.Content ?? "(s'ka mesazh)";
+            if (req.Messages == null || !req.Messages.Any())
+                return BadRequest(new { error = "Messages required" });
 
-            // Kthe një përgjigje demo (dummy)
-            return Ok(new
+            var lastMsg = req.Messages.Last().Content;
+
+            // Dummy response për testim
+            var response = new
             {
-                choices = new[]
-                {
-                    new { message = new { content = $"(Demo) Mora mesazhin: {lastMessage}" } }
-                }
-            });
+                role = "assistant",
+                content = $"(Demo) Mora mesazhin: {lastMsg}"
+            };
+
+            return Ok(response);
         }
+    }
+
+    public class ChatMessage
+    {
+        public string Role { get; set; } = "user";
+        public string Content { get; set; } = "";
+    }
+
+    public class ChatRequest
+    {
+        public List<ChatMessage>? Messages { get; set; }
     }
 }

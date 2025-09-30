@@ -30,3 +30,4 @@
 /Users/eragashi/Desktop/UBT-HR-Assistant/backend/BackendApi/bin/Debug/net9.0/Sprache.dll
 /Users/eragashi/Desktop/UBT-HR-Assistant/backend/BackendApi/obj/Debug/net9.0/BackendApi.csproj.AssemblyReference.cache
 /Users/eragashi/Desktop/UBT-HR-Assistant/backend/BackendApi/obj/Debug/net9.0/BackendApi.csproj.Up2Date
+/Users/eragashi/Desktop/UBT-HR-Assistant/backend/BackendApi/obj/Debug/net9.0/BackendApi.sourcelink.json
