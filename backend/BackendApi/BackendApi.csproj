@@ -1,10 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>90031e33-4d9f-458b-bdcc-34b187fb84e6</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Betalgo.OpenAI.GPT3" Version="6.8.4" />
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.5" />
   </ItemGroup>
 </Project>
