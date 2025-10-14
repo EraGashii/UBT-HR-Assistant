@@ -1,9 +1,16 @@
+using DotNetEnv;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Shto Controllers
+
+Env.Load();
+
+
+var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+Console.WriteLine($"🔑 OpenAI key loaded: {(apiKey != null ? "YES" : "NO")}");
+
 builder.Services.AddControllers();
 
-// Enable CORS për frontend (http://localhost:3000 për React)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -14,7 +21,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Shto Swagger për testim
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,12 +33,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseCors("AllowFrontend");
-
 app.UseAuthorization();
 
-// Routing për Controllers
 app.MapControllers();
 
 app.Run();
